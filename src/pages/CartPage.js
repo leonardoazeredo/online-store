@@ -1,9 +1,7 @@
 import React from 'react'
 
 export default function CartPage(props) {
-    return (
-        <div>
-            <h2>CartPage</h2>
-        </div>
-    )
+  return <div>
+    <h1>Cart</h1>
+  </div>
 }
