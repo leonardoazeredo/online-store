@@ -1,5 +1,6 @@
 import React from 'react'
-import ProductList from '../features/ProductListing'
+
+import ProductList from '../features/product-list'
 
 import data from '../data/products.json'
 

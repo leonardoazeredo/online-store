@@ -1,7 +1,9 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-import Router from './Router'
+import Router from './router'
+
+import './index.css'
 
 const Navigation = () => (
   <nav>
