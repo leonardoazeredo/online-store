@@ -2,8 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import ProductListItem from './product-list-item'
-
+import { cartItemsWithQuantities } from '../cart';
 // import './styles.css'
+
 
 function ProductList(props) {
   return <div className="product-listing">
@@ -14,6 +15,7 @@ function ProductList(props) {
           {...product}
           addToCart={props.addToCart}
           removeFromCart={props.removeFromCart}
+          cart={cartItemsWithQuantities(props.cart)}
         />)
     }
   </div>
