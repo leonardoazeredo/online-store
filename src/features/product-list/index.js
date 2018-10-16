@@ -1,29 +1,25 @@
 import React from 'react'
-import { connect } from 'react-redux'
-
 import ProductListItem from './product-list-item'
+import { connect } from 'react-redux'
 import { cartItemsWithQuantities } from '../cart';
-// import './styles.css'
 
-
-function ProductList(props) {
-  return <div className="product-listing">
+function ProductListing(props) {
+  return <div className='product-listing'>
     {
       props.products.map( product =>
         <ProductListItem
-          key={props.products.indexOf(product)}
-          {...product}
+          product={product}
           addToCart={props.addToCart}
           removeFromCart={props.removeFromCart}
-          cart={cartItemsWithQuantities(props.cart)}
+          cartItem={props.cart.filter(cartItem => cartItem.id === product.id)[0]}
         />)
     }
   </div>
 }
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
   return {
-    cart: state.cart,
+    cart: state.cart
   }
 }
 
@@ -33,9 +29,9 @@ function mapDispatchToProps(dispatch) {
       dispatch({ type: 'ADD', payload: item })
     },
     removeFromCart: (item) => {
-      dispatch({ type: 'REMOVE', payload: item }) 
+      dispatch({ type: 'REMOVE', payload: item })
     }
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductList)
+export default connect(mapStateToProps, mapDispatchToProps)(ProductListing)
