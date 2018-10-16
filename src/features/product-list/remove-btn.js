@@ -6,5 +6,6 @@ export default function RemoveButton(props) {
     onClick={() => props.removeFromCart(props.cartItem)}
   >
   Remove
-  </button>)
+  </button>
+  )
 }

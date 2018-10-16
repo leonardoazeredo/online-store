@@ -1,5 +1,4 @@
 const cartWithoutItem = (cart, item) => cart.filter(cartItem => cartItem.id !== item.id)
-
 const itemInCart = (cart, item) => cart.filter(cartItem => cartItem.id === item.id)[0]
 const addToCart = (cart, item) => {
   const cartItem = itemInCart(cart, item)
@@ -14,6 +13,10 @@ const removeFromCart = (cart, item) => {
     : [ ...cartWithoutItem(cart, item), { ...item, quantity: item.quantity - 1 } ]
 }
 
+const removeAllFromCart = (cart, item) => {
+  return [ ...cartWithoutItem(cart, item) ]
+}
+
 const cartReducer = (state=[], action) => {
   switch(action.type) {
     case 'ADD':
@@ -21,6 +24,10 @@ const cartReducer = (state=[], action) => {
 
     case 'REMOVE':
       return removeFromCart(state, action.payload)
+
+    case 'REMOVEALL':
+      return removeAllFromCart(state, action.payload)
+
 
     default:
       return state;
