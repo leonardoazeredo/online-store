@@ -5,18 +5,18 @@ import fetchApi from '../../modules/fetch-api'
 import ProductListItem from './product-list-item'
 
 class ProductListing extends React.Component {
-  componentDidMount(){
-    const {loadProducts} = this.props
+  componentDidMount() {
+    const { loadProducts } = this.props
     fetchApi('get', "https://student-example-api.herokuapp.com/v1/products.json")
-    .then((json => {
-      loadProducts(json)
-    }))
+      .then((json => {
+        loadProducts(json)
+      }))
   }
   render() {
-    const {addToCart, products, cart, removeFromCart} = this.props
+    const { addToCart, products, cart, removeFromCart } = this.props
     return <div className='product-listing'>
       {
-         products.map(product =>
+        products.map(product =>
           <ProductListItem
             key={products.indexOf(product)}
             product={product}
@@ -38,7 +38,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     loadProducts: (products) => {
-      dispatch({ type: 'LOAD', payload: products})
+      dispatch({ type: 'LOAD', payload: products })
     },
     addToCart: (item) => {
       dispatch({ type: 'ADD', payload: item })

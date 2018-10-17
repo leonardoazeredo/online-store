@@ -1,18 +1,20 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-function sort(items){
-  return items.sort((a, b) => a.id < b.id )
+function sort(items) {
+  return items.sort((a, b) => a.id < b.id)
 }
 
 function Cart(props) {
   return (
     <table>
       <thead>
-        <th>Item</th>
-        <th>Quantity</th>
-        <th></th>
-        <th></th>
+        <tr>
+          <th>Item</th>
+          <th>Quantity</th>
+          <th></th>
+          <th></th>
+        </tr>
       </thead>
       <tbody>
         {
@@ -24,13 +26,13 @@ function Cart(props) {
                 <td>
                   <button
                     onClick={(e) => props.addToCart(item)}
-                    >+</button>
+                  >+</button>
                   <button
                     onClick={(e) => props.removeFromCart(item)}
-                    >-</button>
+                  >-</button>
                   <button
                     onClick={(e) => props.removeAllFromCart(item)}
-                    >Clear</button>
+                  >Clear</button>
                 </td>
               </tr>
           )
@@ -60,4 +62,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Cart)
+export default connect(mapStateToProps, mapDispatchToProps)(Cart)
