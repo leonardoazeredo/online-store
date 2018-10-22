@@ -16,6 +16,11 @@ class Order extends React.Component {
     })
   }
 
+  formatOrder(qty,price){
+    const formatedPrice = parseFloat(qty) * parseFloat(price)
+    return formatedPrice.toFixed(2)
+  }
+
   renderOrder() {
     const { name, email, order_items } = this.state.order
 
@@ -33,7 +38,7 @@ class Order extends React.Component {
                   <li>
                     <img src={image} width={32} alt={name} />
                     {name}
-                    ({qty} @ ${price} = ${parseFloat(qty) * parseFloat(price)})
+                    ({qty} @ ${price} = ${this.formatOrder(qty, price)})
                   </li>
                 )
               }
